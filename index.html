@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="./scripts/image.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Whiteboard</title>
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./StickeyStyle.css" />
+    <link rel="stylesheet" href="./MenuStyle.css" />
+  </head>
+
+  <body>
+    <div class="menu-block" >
+      <a href="#" class="menu-btn" onclick="MenuOpen(this)">
+        <span></span>
+      </a>
+      <div id="tweakTools" class="menu-nav">
+        
+        <!-- Pen Section Begins -->
+        <div id="pen" class="tool active" onclick="handleModeChange('pen')">
+          <!-- Pen Dialog Box Section Begins -->
+          <div
+            id="penOptions"
+          >
+            <!-- Arrow Section Begins -->
+            <div
+              class="controllerarrow"
+              style="position: absolute; left: 60px; top: 3px; width: 12px; height: 12px; 
+                          background-color: #3e2723; transform: rotateZ(45deg);"
+            ></div>
+            <!-- Arrow Section Ends -->
+
+            <!-- Pen Slider Section Begins -->
+            <div
+              class="PenSlider"
+              style="height: 49px; text-align: center; top: 9px; width: 100%; position: absolute;
+                          background-color: #a1887f; border-radius: 5px 5px 0px 0px; font-family: 'Roboto', sans-serif; line-height: 20px;"
+            >
+              <input
+                id="myRange"
+                class="slider"
+                type="range"
+                value="1"
+                min="1"
+                max="80"
+                oninput="changePenSize(this.value)"
+              />
+              <span id="RangeValuePen" class="RangeValueClass">1</span>
+            </div>
+            <!-- Pen Slider Section Ends -->
+
+            <!-- Color Section Begins -->
+            <div
+              class="colorController"
+              style="position: absolute; top: 58px; height: 40%; width: 100%; 
+                          background-color: #8d6e63; border-radius: 0px 0px 5px 5px;"
+            >
+              <div
+                style="position: absolute; left: 0px; top: 0%; height: 100%; width: 33.33%; box-sizing: border-box; 
+                            cursor: pointer;"
+                onclick="changePenColor('black')"
+              >
+                <div
+                  class="blackColor"
+                  style="position: absolute; border-radius: 50%; left: 6px; top: 6px; width: 32px; height: 32px; background-color: black;"
+                ></div>
+              </div>
+
+              <div
+                style="position: absolute; left: 44px; top: 0%; height: 100%; width: 33.33%; box-sizing: border-box; 
+                            cursor: pointer;"
+                onclick="changePenColor('blue')"
+              >
+                <div
+                  class="blueColor"
+                  style="position: absolute; border-radius: 50%; left: 6px; top: 6px; width: 32px; 
+                              height: 32px; background-color: #2962ff;"
+                ></div>
+              </div>
+              <div
+                style="position: absolute; left: 88px; top: 0%; height: 100%; width: 33.33%; box-sizing: border-box; 
+                            cursor: pointer;"
+                onclick="changePenColor('red')"
+              >
+                <div
+                  class="redColor"
+                  style="position: absolute; border-radius: 50%; left: 6px; top: 6px; width: 32px; 
+                              height: 32px; background-color: #ff1744;"
+                ></div>
+              </div>
+            </div>
+            <!-- Color Section Ends -->
+          </div>
+          <!-- Pen Dialog Box Section Begins -->
+          <img
+            class="icon"
+            src="./NewIcons/Black_Pencil.svg"
+            alt="Pencil Image"
+          />
+        </div>
+        <!-- Pen Section Ends -->
+
+        <!-- Eraser Section Begins -->
+        <div
+          id="eraser"
+          class="tool"
+          onclick="handleModeChange('eraser')"
+        >
+          <!-- Eraser Option Section Begins -->
+          <div
+            id="eraserOptions"
+          >
+            <!-- Arrow Section Begins -->
+            <div
+              class="controllerarrow"
+              style="position: absolute; left: 60px; top: 3px; width: 12px; height: 12px; 
+                          background-color: #3e2723; transform: rotateZ(45deg);"
+            ></div>
+            <!-- Arrow Section Ends -->
+
+            <!-- Eraser Slider Section Begins -->
+            <div
+              class="EraserSlider"
+              style="height:49px; text-align: center;top: 9px;width: 100%;position: absolute;
+                          background-color: #a1887f; border-radius: 5px 5px 5px 5px; line-height: 20px;"
+            >
+              <input
+                id="myRange"
+                class="slider"
+                type="range"
+                value="1"
+                min="1"
+                max="80"
+                oninput="changeEraserSize(this.value)"
+              />
+              <span id="RangeValueEraser" class="RangeValueClass">1</span>
+            </div>
+            <!-- Eraser Slider Section Ends -->
+          </div>
+          <!-- Eraser Option Section Ends -->
+
+          <img class="icon" src="./NewIcons/Eraser.svg" alt="Eraser Image" />
+        </div>
+        <!-- Eraser Section Ends -->
+
+        <!-- Sticky Notes Section Begins -->
+        <div id="Sticky" class="tool"">
+          <img
+            class="icon"
+            src="./NewIcons/StickyNote.svg"
+            alt="Sticky Notes Image"
+          />
+        </div>
+        <!-- Sticky Notes Section Begins -->
+
+        <!-- Image Upload Section Begins -->
+        <div
+          id="Image"
+          class="tool"
+          onclick="handleModeChange('Image')"
+        >
+          <!-- Image Upload Option  Begins -->
+          <div
+            id="imageOptions"
+          >
+            <!-- Arrow Section Begins -->
+            <div
+              class="controllerarrow"
+              style="position: absolute; left: 60px; top: 3px; width: 12px; height: 12px; 
+                     background-color: #3e2723; transform: rotateZ(45deg);"
+            ></div>
+            <!-- Arrow Section Ends -->
+
+            <!-- Upload Section Begins -->
+            <div
+              class="Upload"
+              style="height:49px; text-align: center;top: 9px;width: 100%;position: absolute;
+                     background-color: #a1887f; border-radius: 5px 5px 5px 5px;"
+            >
+              <input
+                class="imageInput"
+                type="file"
+                name="pic"
+                accept="image/*"
+                onchange="uploadImage()"
+              />
+
+              <!-- <label for="file" style="cursor: pointer;">Upload Image</label> -->
+            </div>
+            <!-- Upload Section Ends -->
+          </div>
+
+          <!-- Image Upload Option Ends -->
+
+          <img
+            class="icon"
+            src="./NewIcons/Photo.svg"
+            alt="Sticky Notes Image"
+          />
+        </div>
+        <!-- Image Upload Section Ends -->
+
+        <!-- Download Section Begins -->
+        <div id="Download" class="tool">
+          <a href="" onclick="DownloadImage(this)">
+            <img class="icon" src="./NewIcons/Download.svg" alt="Download Image"
+          /></a>
+        </div>
+        <!-- Download Section Ends -->
+
+        <div id="selector" class="tool">
+          <img class="icon" src="./icons/select_icon_dark.png" />
+        </div>
+
+        <div id="undo" class="tool">
+          <img
+            class="icon"
+            id="undoButton"
+            src="./NewIcons/Undo.svg"
+            alt="Undo Button Image"
+          />
+        </div>
+
+        <div id="redo" class="tool">
+          <img
+            class="icon"
+            id="redoButton"
+            src="./NewIcons/Redo.svg"
+            alt="Redo Button Image"
+          />
+        </div>
+
+        <!-- Zoom Section Begins -->
+        <div
+          id="zoom"
+          class="tool"
+          onclick="handleModeChange('zoom')"
+        >
+          <!-- Zoom Option Begins -->
+          <div
+            id="zoomOptions"
+          >
+            <!-- Arrow Section Begins -->
+            <div
+              class="controllerarrow"
+              style="position: absolute; left: 60px; top: 3px; width: 12px; height: 12px; 
+                      background-color: #3e2723; transform: rotateZ(45deg);"
+            ></div>
+            <!-- Arrow Section Ends -->
+
+            <!-- Zoom Slider Section Begins -->
+            <div
+              class="ZoomSlider"
+              style="height:49px; text-align: center;top: 9px;width: 100%;position: absolute;
+                      background-color: #a1887f; border-radius: 5px 5px 5px 5px; line-height: 20px;"
+            >
+              <input
+                id="myRange"
+                class="slider"
+                type="range"
+                value="1"
+                min="1"
+                max="80"
+                oninput="changeZoomSize(this.value)"
+              />
+              <span id="RangeValueZoom" class="RangeValueClass">1%</span>
+            </div>
+            <!-- Zoom Slider Section Ends -->
+          </div>
+          <!-- Zoom Option Ends -->
+
+          <img
+            class="icon"
+            src="./NewIcons/Glass.svg"
+            alt="Magnifying Glass Image"
+          />
+        </div>
+        <!-- Zoom Section Ends -->
+
+        <div
+          id="span"
+          class="tool"
+          onclick="handleModeChange('span')"
+        >
+          <img class="icon" src="./icons/move_icon_dark.png" />
+        </div>
+      </div>
+      <div class="EmptySpace"></div>
+    </div>
+
+    <canvas id="board"> </canvas>
+    
+    <script type="text/javascript" src="./scripts/tools.js"></script>
+    <script type="text/javascript" src="./scripts/script.js"></script>
+    <script type="text/javascript" src="./scripts/StickyScript.js"></script>
+  </body>
+</html>

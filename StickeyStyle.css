@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css?family=Indie+Flower");
+
+
+.close {
+  z-index: 50;
+  right: 11px;
+  display: block;
+  box-sizing: border-box;
+  width: 17px;
+  height: 17px;
+  border-radius: 50px;
+  background-color: #ff4757;
+  position: absolute;
+  top: 9px;
+}
+
+.textBlock{
+  position: absolute;
+  min-height: 200px;
+  min-width: 246px;
+  max-height: 200px;
+  max-width: 246px;
+  background: #e1b12c;
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.4);
+}
+
+.minimize {
+  z-index: 50;
+  right: 36px;
+  display: block;
+  box-sizing: border-box;
+  width: 17px;
+  height: 17px;
+  border-radius: 50px;
+  background-color: #2ed573;
+  position: absolute;
+  top: 9px;
+}
+
+.sticker {
+  z-index: 40;
+  /* min-height: 30px; */
+  min-width: 246px;
+  max-height: 200px;
+  max-width: 246px;
+  padding-top: 30px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 0 15px 0 15px;
+  box-shadow: 9px 8px 18px 3px rgba(0, 0, 0, 0.4);
+  /* background: #e1b12c; */
+}
+.sticker .bar {
+  z-index: 41;
+  height: 30px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background:  #57606f; /*#3b8ea5;  */
+  border-radius: 0px 15px 0px 0px;
+}
+.sticker .bar:hover {
+  cursor: move;
+}
+
+.bar textarea {
+  background: transparent;
+  box-sizing: border-box;
+  border-radius: 0px 15px 15px 0px;
+  border: none;
+  font-family: "Indie Flower", cursive;
+  font-weight: 900;
+  font-size: 1.5rem;
+  text-align: center;
+  color: black;
+}
+
+
+
+.sticker textarea {
+  min-height: 200px;
+  min-width: 246px;
+  max-height: 200px;
+  max-width: 246px;
+  background: transparent;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 0px 15px 15px 0px;
+  border: none;
+  font-family: "Indie Flower", cursive;
+  font-weight: 900;
+  font-size: 1.5rem;
+  text-align: center;
+  color: black;
+}
+.sticker textarea:focus,
+.sticker textarea:active {
+  outline: none;
+}
+
+.add-node-btn {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 10px;
+  color: #271383;
+  font-size: 2rem;
+  background: transparent;
+  text-align: center;
+  border: 2px solid rgb(151, 13, 13);
+  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  user-select: none;
+}
+.add-node-btn:hover {
+  box-shadow: 0px 5px 10px 2px rgba(200, 11, 169, 0.212);
+}
